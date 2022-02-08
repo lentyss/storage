@@ -1,16 +1,25 @@
+let k_key = 'money';
 function setStorage(key, value) {
-    if (value != 1000)
+    if (key) {
+        console.log(key, value);
         localStorage[key] = value;
-    return key;
+    } 
 }
 function getStorage(key) {
-    return localStorage.getItem('1');
+    return localStorage[key];
 }
 function update(){
-    localStorage['2'] = Number(localStorage.getItem('2')) + 1;
-    return localStorage.getItem('2');
+    let result = getStorage(k_key);
+    console.log(result);
+    if (!result){
+        console.log(result);
+        result = 1000;
+        setStorage(k_key, result);
+    }
+    else {
+        console.log(result, k_key);
+        setStorage(k_key, ++result);
+    }
+    console.log(result);
 }
-per = Number(localStorage.getItem('2'));
-console.log(getStorage(setStorage('1', 'money')));
-getStorage(setStorage('2', 1000));
-document.addEventListener("DOMContentLoaded", console.log(update()));
+update();
